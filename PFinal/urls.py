@@ -21,4 +21,5 @@ from start.views import inicio
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('start.urls')),
+    path('usuarios', include('usuarios.urls')),
 ]
