@@ -1,16 +1,16 @@
 {% extends "index.html" %}
 
 {% block titulo %}
-   Iniciar Sesion
+Registro
 {% endblock titulo %}
 {% block h1_header %}
-Iniciar sesion
+Registro
 {% endblock h1_header %}
 {% block main %}
-<form action={% url 'loguin' %} method='POST'>
-    {% csrf_token %}
+<form action={% url 'registro' %} method='POST'>
+    {% csrf_token %} 
     {{formulario}}
-     <input type="submit" value='Iniciar sesion'>
+     <input type="submit" value='Registrarse'>
 
 
 </form>
