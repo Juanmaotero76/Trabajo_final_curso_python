@@ -1,16 +1,16 @@
 {% extends "index.html" %}
 
 {% block titulo %}
-   Iniciar Sesion
+   Cambiar password
 {% endblock titulo %}
 {% block h1_header %}
-Iniciar sesion
+Cambiando password en usuario {{request.user.username}}
 {% endblock h1_header %}
 {% block main %}
-<form action={% url 'loguin' %} method='POST'>
+<form action={% url 'cambiar_pass' %} method='POST'>
     {% csrf_token %}
-    {{formulario}}
-     <input type="submit" value='Iniciar sesion'>
+    {{form}}
+     <input type="submit" value='Cambiar password'>
 
 
 </form>

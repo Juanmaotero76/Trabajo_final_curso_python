@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+
+{% block titulo %}
+  Bienvenida a Sesion
+{% endblock titulo %}
+{% block h1_header %}
+Bienvenido {{request.user.username}}
+{% endblock h1_header %}
+{% block botones %}
+<a class="navbar-brand" href={% url 'inicio' %}>Inicio</a>
+
+{% endblock botones %}
