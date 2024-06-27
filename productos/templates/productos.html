@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% block titulo %}
+Listado de Productos
+{% endblock titulo %}
+
+
+{% block h1_header %}
+<h1 class="mb-5">
+    Listado de Productos 
+</h1> 
+
+{% endblock h1_header %}  
+
+{% block botones %}
+
+       
+<a class="navbar-brand" href={% url 'motores' %}>Motores</a>
+<a class="navbar-brand" href={% url 'aviones' %}>Aviones</a>
+<a class="navbar-brand" href={% url 'productos' %}>Radios</a>
+<a class="navbar-brand" href={% url 'productos' %}>Otros</a>
+<a class="navbar-brand" href={% url 'inicio' %}>Inicio</a>
+
+{% endblock botones %}
+
+{% block main %}
+
+<a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'crearproducto' %}>Publicar nuevo Producto</a>
+
+
+
+
+
+{% endblock main %}

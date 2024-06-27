@@ -4,7 +4,11 @@
   Bienvenida a Sesion
 {% endblock titulo %}
 {% block h1_header %}
-Bienvenido {{request.user.username}}
+<h1 class="mb-5">
+  Bienvenido {{request.user.first_name}}
+</h1> 
+
+
 {% endblock h1_header %}
 {% block botones %}
 <a class="navbar-brand" href={% url 'inicio' %}>Inicio</a>

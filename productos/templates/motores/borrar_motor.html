@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block title_head %}
+Eliminar motores
+{% endblock title_head %}
+
+{% block h1_header %}
+Eliminar motores
+{% endblock h1_header %}
+
+{% block main %}
+
+
+{% if user.id == motores.usuario.id %}
+<div class="container text-center">
+
+<form method="post">{% csrf_token %}
+    <h4>Estás seguro(a) que deseas borrar el Motor {{motores.marca}} {{motores.modelo}} ?</h4>
+    <p>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </p>
+</form>
+
+</div>
+{% else %}
+<div class="container">
+<h4>No tienes acceso a esta pagina!</h4>
+</div>
+{% endif %}
+
+
+
+{% endblock main %}

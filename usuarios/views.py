@@ -58,4 +58,4 @@ def editar_perfil(request):
 class cambiarpass(LoginRequiredMixin, PasswordChangeView):
     template_name='usuarios/cambiar_pass.html'
     success_url=reverse_lazy('editar_perfil')
-    #form=
+  

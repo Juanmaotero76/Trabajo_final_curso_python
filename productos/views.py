@@ -1,38 +1,76 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
-from .models import Motores
+from .models import Motores, Producto
 from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import FormularioNuevoProducto, EditarProducto
+def productos (request):
+    return render (request, 'productos.html' )
+  
+
+# Motores
+class Listademotores(LoginRequiredMixin, ListView):
+    context_object_name = 'motores'
+    queryset = Producto.objects.filter(producto__startswith='motores')
+    template_name = 'motores/lista_de_motores.html'
+    login_url = '/loguin/'
+
+class Motordetalle(LoginRequiredMixin, DetailView):
+    model = Producto
+    context_object_name = 'motores'
+    template_name = 'motores/detalle_motor.html'
+
+class Motoreditar(LoginRequiredMixin, UpdateView):
+    model = Producto
+    form_class = EditarProducto
+    success_url = reverse_lazy('motores')
+    context_object_name = 'motores'
+    template_name = 'motores/editar_motores.html'
+
+class Eliminarmotor(LoginRequiredMixin, DeleteView):
+    model = Producto
+    success_url = reverse_lazy('motores')
+    context_object_name = 'motores'
+    template_name = 'motores/borrar_motor.html'
+
+# aviones    
+class Listadeaviones(LoginRequiredMixin, ListView):
+    context_object_name = 'aviones'
+    queryset = Producto.objects.filter(producto__startswith='aviones')
+    template_name = 'aviones/lista_de_aviones.html'
+    login_url = '/loguin/'
+
+class Aviondetalle(LoginRequiredMixin, DetailView):
+    model = Producto
+    context_object_name = 'aviones'
+    template_name = 'aviones/detalle_avion.html'
+
+class Avioneditar(LoginRequiredMixin, UpdateView):
+    model = Producto
+    form_class = EditarProducto
+    success_url = reverse_lazy('aviones')
+    context_object_name = 'aviones'
+    template_name = 'aviones/editar_avion.html'
+
+class Eliminaravion(LoginRequiredMixin, DeleteView):
+    model = Producto
+    success_url = reverse_lazy('aviones')
+    context_object_name = 'aviones'
+    template_name = 'aviones/borrar_avion.html'
  
 
-class motores(ListView):
-    model=Motores   
-    template_name= 'motores/motores.html'  
-    context_object_name = 'motores'  
+# CREACION DE PRODUCTO
 
-class crearmotores(CreateView):
-    model=Motores
-    template_name= 'motores/crear_motores.html'  
-    success_url=reverse_lazy('motores')
-    fields=[ 'combustible', 'cilindrada','marca','fecha']  
-    
-    
-class editarmotores(UpdateView):
-    model=Motores
-    template_name= 'motores/editar_motores.html'  
-    success_url=reverse_lazy('motores')
-    fields=[ 'combustible', 'cilindrada','marca','fecha']
+class crearproducto(LoginRequiredMixin,CreateView):
+    model = Producto
+    form_class = FormularioNuevoProducto
+    success_url = reverse_lazy('productos')
+    template_name = 'crearproducto.html'
 
-class vermotores(DeleteView):
-    model=Motores   
-    template_name= 'motores/vermotores.html'
-    
-class eliminarmotores(DeleteView):
-    model=Motores   
-    template_name= 'motores/eliminar_motores.html'
-    success_url=reverse_lazy('motores')
-    
-
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(crearproducto, self).form_valid(form)
 

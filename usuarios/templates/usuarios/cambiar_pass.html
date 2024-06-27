@@ -4,6 +4,10 @@
    Cambiar password
 {% endblock titulo %}
 {% block h1_header %}
+<h1 class="mb-5">
+   Cambiando password en usuario {{request.user.username}}
+ </h1> 
+
 Cambiando password en usuario {{request.user.username}}
 {% endblock h1_header %}
 {% block main %}

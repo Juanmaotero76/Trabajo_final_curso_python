@@ -7,7 +7,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>
-            {% block titulo %}{% endblock titulo %}
+            {% block titulo %}
+            
+            {% endblock titulo %}
         </title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
@@ -26,46 +28,56 @@
                 
                 
                 {% if request.user.is_authenticated %}
-                <a class="navbar-brand" href={% url 'editar_perfil' %}>{{request.user.username}}</a>
+                
                     <form action={% url 'logout' %} method='POST'>
                         {% csrf_token %}
                
-                        <input type="submit" class="btn btn-danger" value='Cerrar sesion'>
+                        <input type="submit" class="btn btn-secondary" value='Cerrar sesion'>
 
                      </form>
                      
+                     <a class="navbar-brand" href={% url 'editar_perfil' %}>{{request.user.username}}</a>
                      {% else %}
                      <a class="navbar-brand" href={% url 'loguin' %}>Inicio sesion</a>  
-                     <a class="navbar-brand" href={% url 'registro' %}>Registrarse</a>  
+                     <a class="navbar-brand" href={% url 'registro' %}>Registrarse</a> 
+                      
                 
                 {% endif %}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">        
                 {% block botones %}
               
                 {% endblock botones %}    
-                </div>
+            </ul>    
+            </div>
             </div>
         </nav>
         
         <!-- Header - set the background image for the header in the line below-->
         <header class="masthead">
+            
         
-            <div class="container position-relative">
+            <div class="container position-center">
                 <div class="row justify-content-center">
                     <div class="col-xl-6">
                         <div class="text-center text-white">
                             <!-- Page heading-->
-                            <h1 class="mb-5">
+                            
                                 {% block h1_header %}
-                                    
+                                
+                                
                                 {% endblock h1_header %}
-                            </h1>
+                           
                            
                            
                         </div>
                     </div>
                 </div>
             </div> 
-        
+        </div>    
+    </div>     
+</nav>
            
         </header>
        

@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+{% block titulo %}
+Listado de Productos
+{% endblock titulo %}
+
+
+{% block h1_header %}
+    Listado de Productos  
+    <a  href={% url 'motores' %}>Motores</a> 
+{% endblock h1_header %}  
+
+{% block botones %}
+
+<a class="navbar-brand" href={% url 'inicio' %}>Inicio</a>
+
+
+{% endblock botones %}
+
+{% block main %}
+<br>
+<br>
+
+<div class="container">
+    <h1 class="text-center">Agrega un nuevo Producto</h1>
+<div class="form-group">
+<form style=" width: 50vw; margin-left : 15vw;" method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <div class="container text-center">
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    </div>
+</form>
+</div>
+</div>
+
+<br>
+<br>
+
+<script>
+    var name = "{{ user.id }}";
+    document.getElementById("usuario_id").value = name;
+</script>
+
+
+
+
+
+
+{% endblock main %}

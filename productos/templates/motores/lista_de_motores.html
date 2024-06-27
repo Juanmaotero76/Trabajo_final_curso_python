@@ -1,0 +1,60 @@
+{% extends "index.html" %}
+{% block titulo %}
+Listado de motores
+{% endblock titulo %}
+
+
+{% block h1_header %}
+
+<div class="container text-center">
+    <h1 class="mb-5">
+        Listado de Motores 
+    </h1> 
+</div>
+<br>
+<div class="container text-center">
+    <div class="row">
+            {% for motor in motores %}
+            <div class="col-sm-6 align-items-left">
+                <div class="card-body"> 
+                
+                {% if motor.imagenproducto %}
+                    <p><img src="{{motor.imagenproducto.url}}" class="" width="100px"></p>
+                {% endif %} 
+
+                {{motor.titulo}} 
+                <a class="navbar-brand" href="{% url 'motor' motor.id %}"><i class="bi bi-eye"></i>Ver</a>
+               
+                
+                {% if user.id == motor.usuario.id %}
+                <a class="navbar-brand" href="{% url 'editarmotor' motor.id %}"><i class="bi bi-pencil-fill"></i>Editar</a>
+                <a class="navbar-brand" href="{% url 'eliminarmotor' motor.id %}"><i class="bi bi-trash text-danger"></i>Eliminar</a> 
+                <br>
+                <br>
+                <br>
+                {% endif %}
+                </div>
+             </div>
+        
+            {% endfor %}
+    </div>
+</div>  
+{% endblock h1_header %}  
+
+{% block botones %}
+
+        <li class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'productos' %}>Productos</a></li>
+        
+        <li class="nav-item"><a class="nav-link active"  href={% url 'inicio' %}>Inicio</a></li>
+    </ul>
+
+
+
+{% endblock botones %}
+
+{% block main %}
+{% comment %} <a  href={% url 'crear_motores' %}>Nuevo</a> {% endcomment %}
+
+
+
+{% endblock main %}

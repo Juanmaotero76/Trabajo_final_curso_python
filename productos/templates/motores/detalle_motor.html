@@ -1,0 +1,61 @@
+{% extends "index.html" %}
+{% block titulo %}
+Detalle motor
+{% endblock titulo %}
+
+
+{% block h1_header %}
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{motores.titulo}}</h4></p>
+{% if motores.imagenproducto %}
+    <p><img src="{{motores.imagenproducto.url}}" class="" width="300px"></p>
+{% endif %}
+<p>Marca: {{motores.marca}}</p>
+<p>Modelo: {{motores.modelo}}</p>
+<p>Descripción: {{motores.descripcion}}</p>
+<p>Año: {{motores.year}}</p>
+<p>Precio(US$): {{motores.precio}}</p>
+<p>Teléfono de Contacto: {{motores.telefonoContacto}}</p>
+<p>Email de Contacto: {{motores.emailContacto}}</p>
+
+</div>
+<br>
+{% comment %} <div class="container">
+    <h4>Comentarios...</h4>
+    <br>
+    <div class="container">
+    {% if not motores.comentarios.all %}
+        No han comentado este instrumento
+    {% else %}
+        {% for comentario in motores.comentarios.all %}
+        <p><strong>{{comentario.nombre}}</strong></p>
+        <p>{{comentario.mensaje}}</p>
+        <p><small>{{comentario.fechaComentario}}</small></p>
+        <hr>
+        {% endfor %}
+    {% endif %}
+    <a href="{% url 'comentario' motores.pk %}">Agrega un Comentario</a>
+    </div>
+</div> {% endcomment %}
+<br>  
+{% endblock h1_header %}  
+
+{% block botones %}
+
+<a class="navbar-brand" href={% url 'inicio' %}>Inicio</a>
+<a class="navbar-brand" href={% url 'motores' %}>Motores</a>
+<a class="navbar-brand" href={% url 'productos' %}>Productos</a>
+
+
+
+{% endblock botones %}
+
+{% block main %}
+>
+
+
+{% endblock main %}
