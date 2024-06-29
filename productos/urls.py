@@ -9,7 +9,7 @@ urlpatterns = [
     path('Detallemotor/<int:pk>/', views.Motordetalle.as_view(), name='motor'),
     path('editarmotor/<int:pk>/', views.Motoreditar.as_view(), name='editarmotor'),
     path('Borrarmotor/<int:pk>/', views.Eliminarmotor.as_view(), name='eliminarmotor'),
-    path('busquedamotor/', views.busquedamotor, name='busquedamotor'),
+    path('busquedaproducto/', views.busquedaproducto, name='busquedaproducto'),
     
     path('aviones/', views.Listadeaviones.as_view(), name='aviones'),
     path('Detalleavion/<int:pk>/', views.Aviondetalle.as_view(), name='avion'),

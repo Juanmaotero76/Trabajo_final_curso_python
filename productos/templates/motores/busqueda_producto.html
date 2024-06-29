@@ -8,7 +8,7 @@ Listado de productos
 
 <div class="container text-center">
     <h1 class="mb-5" style="color: #AA1000;">
-        Busqueda de motor
+        Busqueda de productos
     </h1> 
 </div>
 
@@ -35,7 +35,7 @@ Listado de productos
 {% block main %}
 
 <h2 
-<form action={% url 'busquedamotor' %} method="get">
+<form action={% url 'busquedaproducto' %} method="GET">
     {{formulario}}
  
     <input type="submit" value='Buscar producto'>
@@ -49,7 +49,7 @@ Listado de productos
    <ul>
     {% for items in productos  %}
     <li>
-      <p>{{items.titulo}} {{items.precio}}</p>  
+      <p>{{items.titulo}} {{items.producto}} {{items.precio}}</p>  
       
        
     </li>   

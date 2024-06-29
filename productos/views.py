@@ -6,7 +6,8 @@ from django.views.generic.detail import DetailView
 from .models import Motores, Producto
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import FormularioNuevoProducto, EditarProducto, BuscarMotor
+from .forms import FormularioNuevoProducto, EditarProducto, BuscarProducto
+from django.template import Template, Context, loader
 def productos (request):
     return render (request, 'productos.html' )
   
@@ -61,13 +62,14 @@ class Eliminaravion(LoginRequiredMixin, DeleteView):
     context_object_name = 'aviones'
     template_name = 'aviones/borrar_avion.html'
      
-def busquedamotor(request):
-    formulario=BuscarMotor(request.GET)
+def busquedaproducto(request):
+    formulario=BuscarProducto(request.GET)
+  
     if formulario.is_valid():
-        titulo1=formulario.cleaned_data['titulo']
-        productos=Producto.objects.filter(titulo__icontains=titulo1)  
+        tituloi=formulario.cleaned_data['Articulo']
+        productos=Producto.objects.filter(titulo__icontains=tituloi)  
          
-    return render(request, 'motores/busqueda_motor.html',{'productos':productos, 'formulario':formulario})
+        return render(request,'motores/busqueda_producto.html',{'productos':productos, 'formulario':formulario})
 
  
 

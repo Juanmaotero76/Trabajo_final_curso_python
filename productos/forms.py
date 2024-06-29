@@ -39,5 +39,9 @@ class EditarProducto(forms.ModelForm):
         }
 
 
-class BuscarMotor(forms.Form):
-    titulo=forms.CharField(max_length=20, required=False)
+# class BuscarProducto(forms.Form):
+#     Articulo=forms.CharField(max_length=20, required=False)
+
+class BuscarProducto(forms.Form):
+    Articulo=forms.CharField(max_length=20, required=False)
+ 
