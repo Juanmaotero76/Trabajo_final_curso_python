@@ -19,28 +19,15 @@ Detalle motor
 <p>Descripción: {{motores.descripcion}}</p>
 <p>Año: {{motores.year}}</p>
 <p>Precio(US$): {{motores.precio}}</p>
+{% if request.user.is_authenticated %}
 <p>Teléfono de Contacto: {{motores.telefonoContacto}}</p>
 <p>Email de Contacto: {{motores.emailContacto}}</p>
-
+{% else %}
+<p>Para ver mas detalle debe registrarse</p>
 </div>
+{% endif %}
 <br>
-{% comment %} <div class="container">
-    <h4>Comentarios...</h4>
-    <br>
-    <div class="container">
-    {% if not motores.comentarios.all %}
-        No han comentado este instrumento
-    {% else %}
-        {% for comentario in motores.comentarios.all %}
-        <p><strong>{{comentario.nombre}}</strong></p>
-        <p>{{comentario.mensaje}}</p>
-        <p><small>{{comentario.fechaComentario}}</small></p>
-        <hr>
-        {% endfor %}
-    {% endif %}
-    <a href="{% url 'comentario' motores.pk %}">Agrega un Comentario</a>
-    </div>
-</div> {% endcomment %}
+
 <br>  
 {% endblock h1_header %}  
 

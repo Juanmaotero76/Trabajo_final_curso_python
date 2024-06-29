@@ -7,13 +7,16 @@ Listado de motores
 {% block h1_header %}
 
 <div class="container text-center">
-    <h1 class="mb-5">
+    <h1 class="mb-5" style="color: #AA1000;">
         Listado de Motores 
     </h1> 
 </div>
-<br>
+
+
 <div class="container text-center">
     <div class="row">
+        {% comment %} <h3 style="color: #FF0000;">  {% endcomment %}
+        {% if motores %}  
             {% for motor in motores %}
             <div class="col-sm-6 align-items-left">
                 <div class="card-body"> 
@@ -22,13 +25,12 @@ Listado de motores
                     <p><img src="{{motor.imagenproducto.url}}" class="" width="100px"></p>
                 {% endif %} 
 
-                {{motor.titulo}} 
-                <a class="navbar-brand" href="{% url 'motor' motor.id %}"><i class="bi bi-eye"></i>Ver</a>
+               <h5 style="color: #AA1000;"> {{motor.titulo}} </h5> <a class="navbar-brand"  style="color: #FF1000;" href="{% url 'motor' motor.id %}"><i class="bi bi-eye" style="color: #FF1000;"></i>Ver</a>
                
                 
                 {% if user.id == motor.usuario.id %}
-                <a class="navbar-brand" href="{% url 'editarmotor' motor.id %}"><i class="bi bi-pencil-fill"></i>Editar</a>
-                <a class="navbar-brand" href="{% url 'eliminarmotor' motor.id %}"><i class="bi bi-trash text-danger"></i>Eliminar</a> 
+                <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'editarmotor' motor.id %}"><i class="bi bi-pencil-fill"></i>Editar</a>
+                <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'eliminarmotor' motor.id %}"><i class="bi bi-trash text-danger"></i>Eliminar</a> 
                 <br>
                 <br>
                 <br>
@@ -37,8 +39,16 @@ Listado de motores
              </div>
         
             {% endfor %}
+
+            {% else %}
+            <h2 class="mb-10" style="color: #FF1000;">
+                No hay motores disponibles
+            </h2>  
+            
+            {% endif %} 
     </div>
 </div>  
+
 {% endblock h1_header %}  
 
 {% block botones %}
@@ -53,8 +63,16 @@ Listado de motores
 {% endblock botones %}
 
 {% block main %}
-{% comment %} <a  href={% url 'crear_motores' %}>Nuevo</a> {% endcomment %}
 
+<h2 class="mb-10">
+    Desea buscar un motor?
+   </h2>  
+<a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'busquedamotor' %}>Buscar</a>
 
 
 {% endblock main %}
+{% block fondo %}
+
+        <header class="motores">
+        
+{% endblock fondo %}

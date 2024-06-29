@@ -6,19 +6,19 @@ from django.views.generic.detail import DetailView
 from .models import Motores, Producto
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import FormularioNuevoProducto, EditarProducto
+from .forms import FormularioNuevoProducto, EditarProducto, BuscarMotor
 def productos (request):
     return render (request, 'productos.html' )
   
 
 # Motores
-class Listademotores(LoginRequiredMixin, ListView):
+class Listademotores(ListView):
     context_object_name = 'motores'
     queryset = Producto.objects.filter(producto__startswith='motores')
     template_name = 'motores/lista_de_motores.html'
     login_url = '/loguin/'
 
-class Motordetalle(LoginRequiredMixin, DetailView):
+class Motordetalle(DetailView):
     model = Producto
     context_object_name = 'motores'
     template_name = 'motores/detalle_motor.html'
@@ -37,7 +37,7 @@ class Eliminarmotor(LoginRequiredMixin, DeleteView):
     template_name = 'motores/borrar_motor.html'
 
 # aviones    
-class Listadeaviones(LoginRequiredMixin, ListView):
+class Listadeaviones(ListView):
     context_object_name = 'aviones'
     queryset = Producto.objects.filter(producto__startswith='aviones')
     template_name = 'aviones/lista_de_aviones.html'
@@ -60,11 +60,20 @@ class Eliminaravion(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('aviones')
     context_object_name = 'aviones'
     template_name = 'aviones/borrar_avion.html'
+     
+def busquedamotor(request):
+    formulario=BuscarMotor(request.GET)
+    if formulario.is_valid():
+        titulo1=formulario.cleaned_data['titulo']
+        productos=Producto.objects.filter(titulo__icontains=titulo1)  
+         
+    return render(request, 'motores/busqueda_motor.html',{'productos':productos, 'formulario':formulario})
+
  
 
 # CREACION DE PRODUCTO
 
-class crearproducto(LoginRequiredMixin,CreateView):
+class crearproducto(CreateView):
     model = Producto
     form_class = FormularioNuevoProducto
     success_url = reverse_lazy('productos')

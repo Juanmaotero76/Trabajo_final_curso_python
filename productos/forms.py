@@ -37,3 +37,7 @@ class EditarProducto(forms.ModelForm):
             'telefonoContacto' : forms.TextInput(attrs={'class': 'form-control'}),
             'emailContacto' : forms.TextInput(attrs={'class': 'form-control'}),
         }
+
+
+class BuscarMotor(forms.Form):
+    titulo=forms.CharField(max_length=20, required=False)

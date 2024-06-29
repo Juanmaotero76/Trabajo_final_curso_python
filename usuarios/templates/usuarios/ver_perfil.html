@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+{% block titulo %}
+  Bienvenida a Sesion
+{% endblock titulo %}
+{% block h1_header %}
+<h1 class="mb-10">
+ Perfil de {{request.user.first_name}}
+</h1>  
+<h3>
+
+<p>Nombre completo: {{request.user.first_name}} {{request.user.last_name}}</p>
+<p>Email: {{request.user.email}}</P>
+{% if request.user.datosadicionales.ciudad %}
+<p>Ciudad: {{request.user.datosadicionales.ciudad}}</P>
+    
+{% endif %}  
+{% if request.user.datosadicionales.avatar %}
+    <img src={{request.user.datosadicionales.avatar.url}} alt="imagen" height="150px">
+    
+    
+{% endif %}
+</h3>
+
+
+
+{% endblock h1_header %}
+{% block botones %}
+<a class="navbar-brand" href={% url 'inicio' %}>Inicio</a>
+
+{% endblock botones %}
+
+{% block main %}
+<h2 class="mb-10">
+    Desea editar el perfil?
+   </h2>  
+<a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'editar_perfil' %}>Editar</a>
+
+
+{% endblock main %}

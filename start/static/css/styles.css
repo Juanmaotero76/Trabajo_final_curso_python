@@ -10833,8 +10833,24 @@ textarea.form-control-lg {
 header.masthead {
   position: relative;
   background-color: #343a40;
-  background: url("../assets/img/extra_inv1.jpg") no-repeat center center;
+  background: url("../assets/img/20220306_181035.jpg") no-repeat center center;
   background-size: cover;
   padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+header.masthead1 {
+  position: relative;
+  background-color: #343a40;
+  background: url("../assets/img/fondo1.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+header.motores {
+  position: relative;
+  background-color: #343a40;
+  background: url("../assets/img/motores.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 20rem;
   padding-bottom: 8rem;
 }

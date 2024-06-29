@@ -4,10 +4,13 @@ Listado de Productos
 {% endblock titulo %}
 
 
+
 {% block h1_header %}
-    Listado de Productos  
-    <a  href={% url 'motores' %}>Motores</a> 
+<h1>
+Crear producto  
+</h1>
 {% endblock h1_header %}  
+ 
 
 {% block botones %}
 
@@ -19,7 +22,7 @@ Listado de Productos
 {% block main %}
 <br>
 <br>
-
+{% if request.user.is_authenticated %}
 <div class="container">
     <h1 class="text-center">Agrega un nuevo Producto</h1>
 <div class="form-group">
@@ -31,7 +34,17 @@ Listado de Productos
 </form>
 </div>
 </div>
+{% else %}
 
+<h2 class="mb-10" style="color: #FF1000;">
+    Para poder cargar productos debe estar registrado
+</h2> 
+
+   
+
+
+                      
+{% endif %}
 <br>
 <br>
 

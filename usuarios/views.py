@@ -36,9 +36,15 @@ def registro(request):
         
     
     return render(request, 'usuarios/registro.html', {'formulario':formulario})
+
 def Bienvenida (request):
    
     return render(request, 'usuarios/bienvenida.html')
+
+def Verperfil (request):
+   
+    return render(request, 'usuarios/ver_perfil.html')
+
 
 @login_required
 def editar_perfil(request):
@@ -49,6 +55,7 @@ def editar_perfil(request):
         if formulario.is_valid():
             datosextra= request.user.datosadicionales
             datosextra.avatar=formulario.cleaned_data.get('avatar')
+            datosextra.ciudad=formulario.cleaned_data.get('ciudad')
             datosextra.save()
             formulario.save()
         

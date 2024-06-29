@@ -6,6 +6,10 @@
 {% block h1_header %}
 <h1 class="mb-5">
    Cerraste sesion
+   {% if request.user.datosadicionales.avatar %}
+   <img src={{request.user.datosadicionales.avatar.url}} alt="imagen" height="150px">
+ 
+   {% endif %}
  </h1> 
  
 {% endblock h1_header %}

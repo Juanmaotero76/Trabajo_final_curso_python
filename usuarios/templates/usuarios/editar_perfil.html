@@ -7,7 +7,11 @@ Editar el perfil de {{request.user.username}}
 
 {% block h1_header %}
 <h1 class="mb-5">
-    Editar Perfil
+    Editar Perfil de {{request.user.username}}
+    {% if request.user.datosadicionales.avatar %}
+  <img src={{request.user.datosadicionales.avatar.url}} alt="imagen" height="150px">
+
+  {% endif %}
   </h1> 
   
 
@@ -16,9 +20,9 @@ Editar el perfil de {{request.user.username}}
 <form action={% url 'editar_perfil' %} method='POST' enctype="multipart/form-data">
     {% csrf_token %} 
     {{formulario}}
-     <input type="submit" value='Actualizar'>
+     <input type="submit" class="btn btn-secondary" value='Actualizar'>
 
-     <a class="navbar-brand" href={% url 'cambiar_pass' %}>Cambiar Contraseña</a>
+     <a class="btn btn-secondary"  type="button"   href={% url 'cambiar_pass' %}>Cambiar Contraseña</a>
 </form>
 
 {% endblock  %}  

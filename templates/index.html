@@ -36,7 +36,14 @@
 
                      </form>
                      
-                     <a class="navbar-brand" href={% url 'editar_perfil' %}>{{request.user.username}}</a>
+                     <a class="navbar-brand" href={% url 'ver_perfil' %}>
+                        {% if request.user.datosadicionales.avatar %}
+                        <img src={{request.user.datosadicionales.avatar.url}} alt="imagen" height="40px">
+                        {% else %}
+                        <img src={% static 'assets/img/descarga1.jpg' %} alt="imagen" height="40px"> 
+
+                        {% endif %}
+                        {{request.user.username}}</a>
                      {% else %}
                      <a class="navbar-brand" href={% url 'loguin' %}>Inicio sesion</a>  
                      <a class="navbar-brand" href={% url 'registro' %}>Registrarse</a> 
@@ -55,8 +62,11 @@
         </nav>
         
         <!-- Header - set the background image for the header in the line below-->
+        {% block fondo %}
+
         <header class="masthead">
-            
+        
+        {% endblock fondo %}
         
             <div class="container position-center">
                 <div class="row justify-content-center">
