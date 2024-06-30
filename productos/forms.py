@@ -39,9 +39,8 @@ class EditarProducto(forms.ModelForm):
         }
 
 
-# class BuscarProducto(forms.Form):
-#     Articulo=forms.CharField(max_length=20, required=False)
 
 class BuscarProducto(forms.Form):
     Articulo=forms.CharField(max_length=20, required=False)
+    Producto=forms.CharField(label='Tipo de producto',max_length=20, required=False)#forms.ChoiceField(label='Tipo de producto',choices=[("1","motores"),("2","aviones"),("3","radios"),("4","otros")], required=False)
  

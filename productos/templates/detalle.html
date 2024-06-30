@@ -1,0 +1,54 @@
+{% extends "index.html" %}
+{% block titulo %}
+Detalle
+{% endblock titulo %}
+
+
+{% block h1_header %}
+<br>
+<br>
+
+<div class="container">
+
+<p><h4>{{motores.titulo}}{{aviones.titulo}}</h4></p>
+{% if motores.imagenproducto %}
+    <p><img src="{{motores.imagenproducto.url}}" class="" width="300px"></p>
+   {% endif %}
+{% if aviones.imagenproducto %}
+    <p><img src="{{aviones.imagenproducto.url}}" class="" width="300px"></p>
+{% endif %}
+<p>Marca: {{motores.marca}}{{aviones.marca}}</p>
+<p>Modelo: {{motores.modelo}}{{aviones.modelo}}</p>
+<p>Descripción: {{motores.descripcion}}{{aviones.descripcion}}</p>
+<p>Año: {{motores.year}}{{aviones.year}}</p>
+<p>Precio(US$): {{motores.precio}}{{aviones.precio}}</p>
+{% if request.user.is_authenticated %}
+<p>Teléfono de Contacto: {{motores.telefonoContacto}}{{aviones.telefonoContacto}}</p>
+<p>Email de Contacto: {{motores.emailContacto}}{{aviones.emailContacto}}</p>
+
+{% else %}
+<p>Para ver mas detalle debe registrarse</p>
+</div>
+{% endif %}
+<br>
+
+<br>  
+{% endblock h1_header %}  
+
+{% block botones %}
+<a class="navbar-brand" href={% url 'motores' %}>Motores</a>
+<a class="navbar-brand" href={% url 'aviones' %}>Aviones</a>
+<a class="navbar-brand" href={% url 'productos' %}>Radios</a>
+<a class="navbar-brand" href={% url 'productos' %}>Otros</a>
+<a class="navbar-brand" href={% url 'inicio' %}>Inicio</a>
+
+
+
+
+{% endblock botones %}
+
+{% block main %}
+>
+
+
+{% endblock main %}

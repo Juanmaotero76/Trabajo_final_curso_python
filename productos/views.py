@@ -22,20 +22,20 @@ class Listademotores(ListView):
 class Motordetalle(DetailView):
     model = Producto
     context_object_name = 'motores'
-    template_name = 'motores/detalle_motor.html'
+    template_name = 'detalle.html'
 
 class Motoreditar(LoginRequiredMixin, UpdateView):
     model = Producto
     form_class = EditarProducto
     success_url = reverse_lazy('motores')
-    context_object_name = 'motores'
-    template_name = 'motores/editar_motores.html'
+    context_object_name = 'producto'
+    template_name = 'editar.html'
 
 class Eliminarmotor(LoginRequiredMixin, DeleteView):
     model = Producto
     success_url = reverse_lazy('motores')
-    context_object_name = 'motores'
-    template_name = 'motores/borrar_motor.html'
+    context_object_name = 'producto'
+    template_name = 'borrar.html'
 
 # aviones    
 class Listadeaviones(ListView):
@@ -44,32 +44,33 @@ class Listadeaviones(ListView):
     template_name = 'aviones/lista_de_aviones.html'
     login_url = '/loguin/'
 
-class Aviondetalle(LoginRequiredMixin, DetailView):
+class Aviondetalle(DetailView):
     model = Producto
     context_object_name = 'aviones'
-    template_name = 'aviones/detalle_avion.html'
+    template_name = 'detalle.html'
 
 class Avioneditar(LoginRequiredMixin, UpdateView):
     model = Producto
     form_class = EditarProducto
     success_url = reverse_lazy('aviones')
-    context_object_name = 'aviones'
-    template_name = 'aviones/editar_avion.html'
+    context_object_name = 'producto'
+    template_name = 'editar.html'
 
 class Eliminaravion(LoginRequiredMixin, DeleteView):
     model = Producto
     success_url = reverse_lazy('aviones')
-    context_object_name = 'aviones'
-    template_name = 'aviones/borrar_avion.html'
+    context_object_name = 'producto'
+    template_name = 'borrar.html'
      
 def busquedaproducto(request):
     formulario=BuscarProducto(request.GET)
   
     if formulario.is_valid():
         tituloi=formulario.cleaned_data['Articulo']
-        productos=Producto.objects.filter(titulo__icontains=tituloi)  
-         
-        return render(request,'motores/busqueda_producto.html',{'productos':productos, 'formulario':formulario})
+        productoi=formulario.cleaned_data['Producto']
+        productos=Producto.objects.filter(producto__icontains=productoi, titulo__icontains=tituloi)  
+                 
+        return render(request,'busqueda_producto.html',{'productos':productos, 'productoi':productoi, 'formulario':formulario})
 
  
 

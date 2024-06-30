@@ -10849,8 +10849,8 @@ header.masthead1 {
 header.motores {
   position: relative;
   background-color: #343a40;
-  background: url("../assets/img/motores.jpg") no-repeat center center;
+  background: url("../assets/img/motor.jpg") no-repeat center center;
   background-size: cover;
-  padding-top: 20rem;
-  padding-bottom: 8rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }

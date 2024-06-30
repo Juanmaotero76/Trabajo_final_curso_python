@@ -34,7 +34,7 @@ Listado de productos
 
 {% block main %}
 
-<h2 
+<h2> 
 <form action={% url 'busquedaproducto' %} method="GET">
     {{formulario}}
  
@@ -49,8 +49,18 @@ Listado de productos
    <ul>
     {% for items in productos  %}
     <li>
-      <p>{{items.titulo}} {{items.producto}} {{items.precio}}</p>  
-      
+      {{items.titulo}} {{items.producto}} {{items.precio}}
+           
+      <a href="{% url 'detail' items.id %}"><i class="bi bi-eye"></i>Ver</a>
+    </li> 
+
+    {% if user.id == items.usuario.id %}
+    <li>
+    <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'edit' items.id %}"><i class="bi bi-pencil-fill"></i>Editar</a>
+    <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'eliminar' items.id %}"><i class="bi bi-trash text-danger"></i>Eliminar</a> 
+    
+    {% endif %} 
+
        
     </li>   
     {% endfor %} 
@@ -67,6 +77,6 @@ Listado de productos
 
 {% block fondo %}
 
-        <header class="motores">
+        <header class="masthead1">
         
 {% endblock fondo %}

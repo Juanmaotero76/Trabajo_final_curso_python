@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+
+{% block title_head %}
+Eliminar 
+{% endblock title_head %}
+
+{% block h1_header %}
+Eliminar {{producto.marca}} {{producto.modelo}}
+{% endblock h1_header %}
+
+{% block main %}
+
+
+{% if user.id == producto.usuario.id %}
+<div class="container text-center">
+
+<form method="post">{% csrf_token %}
+    <h4>Estás seguro(a) que deseas borrar el producto {{producto.marca}} {{producto.modelo}} ?</h4>
+    <p>
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+    </p>
+</form>
+
+</div>
+{% else %}
+<div class="container">
+<h4>No tienes acceso a esta pagina!</h4>
+</div>
+{% endif %}
+
+
+
+{% endblock main %}
+{% block botones %}
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'productos' %}>Productos</a></li>
+        <li class="nav-item"><a class="nav-link active" href={% url 'inicio' %}>Inicio</a></li>
+    
+    </ul>
+
+{% endblock botones %}

@@ -20,7 +20,7 @@ class Producto(models.Model):
     ('otro', 'Otro'),
     )
     usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    titulo = models.CharField(max_length=200)
+    titulo = models.CharField(max_length=50)
     producto = models.CharField(max_length=15, choices=productoSeleccion, default='motores')
     marca = models.CharField(max_length=40)
     modelo = models.CharField(max_length=40)
