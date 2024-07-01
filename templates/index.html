@@ -29,12 +29,7 @@
                 
                 {% if request.user.is_authenticated %}
                 
-                    <form action={% url 'logout' %} method='POST'>
-                        {% csrf_token %}
-               
-                        <input type="submit" class="btn btn-secondary" value='Cerrar sesion'>
-
-                     </form>
+                    
                      
                      <a class="navbar-brand" href={% url 'ver_perfil' %}>
                         {% if request.user.datosadicionales.avatar %}
@@ -43,7 +38,18 @@
                         <img src={% static 'assets/img/descarga1.jpg' %} alt="imagen" height="40px"> 
 
                         {% endif %}
-                        {{request.user.username}}</a>
+                        {{request.user.username}}
+                        
+                    </a>
+                    <form action={% url 'logout' %} method='POST'>
+                        {% csrf_token %}
+               
+                        <input type="submit" class="btn btn-secondary" value='Cerrar sesion'>
+                        
+
+                     </form>
+                     <a class="navbar-brand" href={% url 'lista' %}>Bandeja de entrada</a>
+                        
                      {% else %}
                      <a class="navbar-brand" href={% url 'loguin' %}>Inicio sesion</a>  
                      <a class="navbar-brand" href={% url 'registro' %}>Registrarse</a> 
@@ -54,7 +60,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">        
                 {% block botones %}
-              
+                
                 {% endblock botones %}    
             </ul>    
             </div>
@@ -94,13 +100,8 @@
         {% block main %}
             
                         
-                        {% comment %} <h2>Engaging Background Images</h2>
-                        <p class="lead">The background images used in this template are sourced from Unsplash and are open source and free to use.</p>
-                        <p class="mb-0">I can't tell you how many people say they were turned off from science because of a science teacher that completely sucked out all the inspiration and enthusiasm they had for the course.</p> {% endcomment %}
-                       
-                    {% comment %} </div>
-                </div> {% endcomment %}
-            </div>
+                     
+           
         {% endblock main %}
         <!-- Content section-->
         {% block otro2  %}

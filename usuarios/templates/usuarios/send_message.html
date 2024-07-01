@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+
+{% block h1_header %}
+<h1>
+Enviar mensajes
+</h1>
+{% endblock h1_header %}
+
+
+
+
+
+{% block main %}
+<h1>Enviar mensaje</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <label for="recipient">Destinatario:</label><br>
+    <input type="text" id="recipient" name="recipient" required><br><br>
+    <label for="message">Mensaje:</label><br>
+    <textarea id="message" name="message" rows="5" cols="30" required></textarea><br><br>
+    <input type="submit" value="Enviar">
+</form>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+{% endblock %}
+
+{% block botones %}
+
+        <li class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'productos' %}>Productos</a></li>
+        
+        <li class="nav-item"><a class="nav-link active"  href={% url 'inicio' %}>Inicio</a></li>
+    </ul>
+
+
+
+{% endblock botones %}

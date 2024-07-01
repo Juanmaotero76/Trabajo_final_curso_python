@@ -7,6 +7,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView
 from django.urls import reverse_lazy
 from usuarios.models import DatosAdicionales
+from django.contrib.auth.decorators import login_required
+from .models import Message
+from django.contrib.auth.models import User
 
 # Create your views here.
 def loguin (request):
@@ -65,4 +68,27 @@ def editar_perfil(request):
 class cambiarpass(LoginRequiredMixin, PasswordChangeView):
     template_name='usuarios/cambiar_pass.html'
     success_url=reverse_lazy('editar_perfil')
+    
+    
+    
+@login_required
+def send_message(request):
+    if request.method == 'POST':
+        recipient_username = request.POST['recipient']
+        message_content = request.POST['message']
+
+        try:
+            recipient = User.objects.get(username=recipient_username)
+            Message.objects.create(sender=request.user, recipient=recipient, content=message_content)
+            return redirect('lista')
+        except User.DoesNotExist:
+            return render(request, 'usuarios/send_message.html', {'error': 'User not found'})
+
+    return render(request, 'usuarios/send_message.html')
+
+@login_required
+def message_list(request):
+    messages = Message.objects.filter(recipient=request.user).order_by('-timestamp')
+    context = {'messages': messages}
+    return render(request, 'usuarios/message_list.html', context)
   

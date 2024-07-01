@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+
+{% block main %}
+<h1>Inbox</h1>
+
+{% for message in messages %}
+<div class="message">
+    <p><b>From:</b> {{ message.sender.username }}</p>
+    <p><b>Message:</b> {{ message.content }}</p>
+    <p><b>Sent:</b> {{ message.timestamp }}</p>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'enviar' %}>Enviar mensaje</a>
+</div>
+{% endfor %}
+{% endblock %}
+{% block botones %}
+
+        <li class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'productos' %}>Productos</a></li>
+        
+        <li class="nav-item"><a class="nav-link active"  href={% url 'inicio' %}>Inicio</a></li>
+    </ul>
+
+
+
+{% endblock botones %}

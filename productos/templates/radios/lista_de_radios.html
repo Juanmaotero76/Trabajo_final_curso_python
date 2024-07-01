@@ -1,6 +1,6 @@
 {% extends "index.html" %}
 {% block titulo %}
-Listado de aviones
+Listado de Radios
 {% endblock titulo %}
 
 
@@ -8,7 +8,7 @@ Listado de aviones
 
 <div class="container text-center">
     <h1>
-        Listado de Aviones
+        Listado de Radios
     </h1> 
 </div>
 
@@ -16,8 +16,8 @@ Listado de aviones
 <div class="container text-center">
     <div class="row">
         
-        {% if aviones %}  
-            {% for item in aviones %}
+        {% if radios %}  
+            {% for item in radios %}
             <div class="col-sm-6 align-items-left">
                 <div class="card-body"> 
                 
@@ -42,7 +42,7 @@ Listado de aviones
 
             {% else %}
             <h2 class="mb-10" style="color: #FF1000;">
-                No hay motores disponibles
+                No hay radios disponibles
             </h2>  
             
             {% endif %} 
@@ -65,7 +65,7 @@ Listado de aviones
 
 {% block fondo %}
 
-        <header class="aviones">
+        <header class="radios">
         
 {% endblock fondo %}
 {% block main %}

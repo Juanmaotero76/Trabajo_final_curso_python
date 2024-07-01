@@ -31,10 +31,11 @@
 {% endblock botones %}
 
 {% block main %}
-<h2 class="mb-10">
-    Desea editar el perfil?
-   </h2>  
-<a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'editar_perfil' %}>Editar</a>
+
+<a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'lista' %}>Bandeja de entrada</a>
+
+
+<a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'editar_perfil' %}>Editar perfil</a>
 
 
 {% endblock main %}

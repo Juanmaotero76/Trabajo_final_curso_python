@@ -17,14 +17,19 @@ Detalle
 {% if aviones.imagenproducto %}
     <p><img src="{{aviones.imagenproducto.url}}" class="" width="300px"></p>
 {% endif %}
-<p>Marca: {{motores.marca}}{{aviones.marca}}</p>
-<p>Modelo: {{motores.modelo}}{{aviones.modelo}}</p>
-<p>Descripción: {{motores.descripcion}}{{aviones.descripcion}}</p>
-<p>Año: {{motores.year}}{{aviones.year}}</p>
-<p>Precio(US$): {{motores.precio}}{{aviones.precio}}</p>
+{% if radios.imagenproducto %}
+    <p><img src="{{radios.imagenproducto.url}}" class="" width="300px"></p>
+   {% endif %}
+<p>Marca: {{motores.marca}}{{aviones.marca}} {{radios.marca}}{{otros.marca}}</p>
+<p>Modelo: {{motores.modelo}}{{aviones.modelo}}{{radios.modelo}}{{otros.modelo}}</p>
+<p>Descripción: {{motores.descripcion}}{{aviones.descripcion}}{{radios.descripcion}}{{otros.descripcion}}</p>
+<p>Año: {{motores.year}}{{aviones.year}}{{radios.year}}{{otros.year}}</p>
+<p>Precio(US$): {{motores.precio}}{{aviones.precio}}{{radios.precio}}{{otro.precio}}</p>
 {% if request.user.is_authenticated %}
-<p>Teléfono de Contacto: {{motores.telefonoContacto}}{{aviones.telefonoContacto}}</p>
-<p>Email de Contacto: {{motores.emailContacto}}{{aviones.emailContacto}}</p>
+<p>Teléfono de Contacto: {{motores.telefonoContacto}}{{aviones.telefonoContacto}}{{radios.telefonoContacto}}{{otros.telefonoContacto}}</p>
+<p>Email de Contacto: {{motores.emailContacto}}{{aviones.emailContacto}}{{radios.emailContacto}}{{otros.emailContacto}}</p>
+<p>Usuario de la publicacion: {{motores.usuario}}{{aviones.usuario}}{{radios.usuario}}{{otros.usuario}}</p>
+
 
 {% else %}
 <p>Para ver mas detalle debe registrarse</p>
@@ -48,7 +53,32 @@ Detalle
 {% endblock botones %}
 
 {% block main %}
->
+
+{% if request.user.is_authenticated %}
+    {% if request.user.id == aviones.usuario.id or request.user.id == motores.usuario.id or request.user.id == radios.usuario.id or request.user.id == otros.usuario.id %}
+    {% if aviones %}
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'edit' aviones.id %}>Editar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminar' aviones.id %}>Eliminar</a>
+    {% endif %}
+    {% if motores %}
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'edit' aviones.id %}>Editar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminar' motores.id %}>Eliminar</a>
+    {% endif %}
+    {% if radios %}
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'edit' radios.id %}>Editar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminar' radios.id %}>Eliminar</a>
+    {% endif %}
+    {% if otros %}
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'edit' otros.id %}>Editar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminar' otros.id %}>Eliminar</a>
+    {% endif %}
+
+    {% else %}
+
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'enviar' %}>enviar mensaje a {{motores.usuario}}{{aviones.usuario}} {{radios.usuario}}{{otros.usuario}}?</a>
+
+    {% endif %}
+{% endif %}
 
 
 {% endblock main %}

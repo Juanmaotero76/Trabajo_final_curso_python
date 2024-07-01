@@ -61,6 +61,31 @@ class Eliminaravion(LoginRequiredMixin, DeleteView):
     success_url = reverse_lazy('aviones')
     context_object_name = 'producto'
     template_name = 'borrar.html'
+    
+# radio    
+class Listaderadios(ListView):
+    context_object_name = 'radios'
+    queryset = Producto.objects.filter(producto__startswith='radios')
+    template_name = 'radios/lista_de_radios.html'
+    login_url = '/loguin/'
+
+class Radiodetalle(DetailView):
+    model = Producto
+    context_object_name = 'radios'
+    template_name = 'detalle.html'
+
+class Radioditar(LoginRequiredMixin, UpdateView):
+    model = Producto
+    form_class = EditarProducto
+    success_url = reverse_lazy('radios')
+    context_object_name = 'producto'
+    template_name = 'editar.html'
+
+class Eliminarradio(LoginRequiredMixin, DeleteView):
+    model = Producto
+    success_url = reverse_lazy('radios')
+    context_object_name = 'producto'
+    template_name = 'borrar.html'
      
 def busquedaproducto(request):
     formulario=BuscarProducto(request.GET)

@@ -30,10 +30,14 @@ Listado de motores
                 {% if user.id == motor.usuario.id %}
                 <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'edit' motor.id %}"><i class="bi bi-pencil-fill"></i>Editar</a>
                 <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'eliminar' motor.id %}"><i class="bi bi-trash text-danger"></i>Eliminar</a> 
-                <br>
-                <br>
-                <br>
+                
+                {% else %}
+                {% if request.user.is_authenticated  %}
+                <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'enviar'  %}"><i class="bi bi-trash text-danger"></i>contacto</a> 
                 {% endif %}
+                {% endif %}
+                <br>
+                <br>
                 </div>
              </div>
         

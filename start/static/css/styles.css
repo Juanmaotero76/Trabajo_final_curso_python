@@ -10854,3 +10854,21 @@ header.motores {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+
+header.aviones {
+  position: relative;
+  background-color: #343a40;
+  background: url("../assets/img/avion.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+header.radios {
+  position: relative;
+  background-color: #343a40;
+  background: url("../assets/img/radio.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}

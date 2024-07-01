@@ -16,6 +16,12 @@ urlpatterns = [
     path('editaravion/<int:pk>/', views.Avioneditar.as_view(), name='edit'),
     path('Borraravion/<int:pk>/', views.Eliminaravion.as_view(), name='eliminar'),
     
+    path('radios/', views.Listaderadios.as_view(), name='radios'),
+    path('Detalleradio/<int:pk>/', views.Radiodetalle.as_view(), name='detail'),
+    path('editarradio/<int:pk>/', views.Radioditar.as_view(), name='edit'),
+    path('Borrarradio/<int:pk>/', views.Eliminarradio.as_view(), name='eliminar'),
+    
+    
     # path('motores/', views.Listaderadioes.as_view(), name='motores'),
     # path('Detallemotor/<int:pk>/', views.Radiodetalle.as_view(), name='motor'),
     # path('editarmotor/<int:pk>/', views.Radioeditar.as_view(), name='editarmotor'),
