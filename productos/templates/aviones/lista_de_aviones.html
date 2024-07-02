@@ -25,13 +25,13 @@ Listado de aviones
                     <p><img src="{{item.imagenproducto.url}}" class="" width="100px"></p>
                 {% endif %} 
 
-               <h5 style="color: #AA1000;"> {{item.titulo}} </h5> <a class="navbar-brand"  style="color: #FF1000;" href="{% url 'detail' item.id %}"><i class="bi bi-eye" style="color: #FF1000;"></i>Ver</a>
+               <h5 style="color: #AA1000;"> {{item.titulo}} </h5> 
+               <a class="btn btn-outline-secondary"  style="color: #FF1000;" href="{% url 'detail' item.id %}">Ver</a>
                
                 
                 {% if user.id == item.usuario.id %}
-                <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'edit' item.id %}"><i class="bi bi-pencil-fill"></i>Editar</a>
-                <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'eliminar' item.id %}"><i class="bi bi-trash text-danger"></i>Eliminar</a> 
-                <br>
+                <a class="btn btn-outline-secondary" style="color: #FF1000;"  href="{% url 'editav' item.id %}">Editar</a>
+                <a class="btn btn-outline-secondary" style="color: #FF1000;"  href="{% url 'eliminarav' item.id %}"></i>Eliminar</a> 
                 <br>
                 <br>
                 {% endif %}

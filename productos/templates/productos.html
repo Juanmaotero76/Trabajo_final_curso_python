@@ -6,7 +6,7 @@ Listado de Productos
 
 {% block h1_header %}
 <h1 style="color: #FF0000;">
-    Listado de Productos 
+    Elija el tipo de producto deseado
 </h1> 
 
 {% endblock h1_header %}  
@@ -17,15 +17,15 @@ Listado de Productos
 <a class="navbar-brand" href={% url 'motores' %}>Motores</a>
 <a class="navbar-brand" href={% url 'aviones' %}>Aviones</a>
 <a class="navbar-brand" href={% url 'radios' %}>Radios</a>
-<a class="navbar-brand" href={% url 'productos' %}>Otros</a>
+<a class="navbar-brand" href={% url 'otros' %}>Otros</a>
 <a class="navbar-brand" href={% url 'inicio' %}>Inicio</a>
 
 {% endblock botones %}
 
 {% block main %}
-
+{% if request.user.is_authenticated %}
 <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'crearproducto' %}>Publicar nuevo Producto</a>
-
+{% endif %}
 
 
 

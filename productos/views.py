@@ -17,7 +17,7 @@ class Listademotores(ListView):
     context_object_name = 'motores'
     queryset = Producto.objects.filter(producto__startswith='motores')
     template_name = 'motores/lista_de_motores.html'
-    login_url = '/loguin/'
+ 
 
 class Motordetalle(DetailView):
     model = Producto
@@ -42,7 +42,7 @@ class Listadeaviones(ListView):
     context_object_name = 'aviones'
     queryset = Producto.objects.filter(producto__startswith='aviones')
     template_name = 'aviones/lista_de_aviones.html'
-    login_url = '/loguin/'
+ 
 
 class Aviondetalle(DetailView):
     model = Producto
@@ -67,7 +67,7 @@ class Listaderadios(ListView):
     context_object_name = 'radios'
     queryset = Producto.objects.filter(producto__startswith='radios')
     template_name = 'radios/lista_de_radios.html'
-    login_url = '/loguin/'
+ 
 
 class Radiodetalle(DetailView):
     model = Producto
@@ -84,6 +84,31 @@ class Radioditar(LoginRequiredMixin, UpdateView):
 class Eliminarradio(LoginRequiredMixin, DeleteView):
     model = Producto
     success_url = reverse_lazy('radios')
+    context_object_name = 'producto'
+    template_name = 'borrar.html'
+
+# otros    
+class Listadeotros(ListView):
+    context_object_name = 'otro'
+    queryset = Producto.objects.filter(producto__startswith='otro')
+    template_name = 'otros/lista_de_otros.html'
+   
+
+class Otrodetalle(DetailView):
+    model = Producto
+    context_object_name = 'otro'
+    template_name = 'detalle.html'
+
+class Otroeditar(LoginRequiredMixin, UpdateView):
+    model = Producto
+    form_class = EditarProducto
+    success_url = reverse_lazy('otros')
+    context_object_name = 'producto'
+    template_name = 'editar.html'
+
+class Eliminarotro(LoginRequiredMixin, DeleteView):
+    model = Producto
+    success_url = reverse_lazy('otros')
     context_object_name = 'producto'
     template_name = 'borrar.html'
      

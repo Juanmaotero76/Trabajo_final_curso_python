@@ -10,6 +10,7 @@ from usuarios.models import DatosAdicionales
 from django.contrib.auth.decorators import login_required
 from .models import Message
 from django.contrib.auth.models import User
+from productos.models import Producto
 
 # Create your views here.
 def loguin (request):
@@ -73,6 +74,7 @@ class cambiarpass(LoginRequiredMixin, PasswordChangeView):
     
 @login_required
 def send_message(request):
+    
     if request.method == 'POST':
         recipient_username = request.POST['recipient']
         message_content = request.POST['message']

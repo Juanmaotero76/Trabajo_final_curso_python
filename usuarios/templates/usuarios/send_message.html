@@ -11,7 +11,7 @@ Enviar mensajes
 
 
 {% block main %}
-<h1>Enviar mensaje</h1>
+<h1>Enviar mensaje  {{motores.usuario.id}}{{aviones.usuario.id}} {{radios.usuario}}{{otros.usuario}}</h1>
 
 <form method="post">
     {% csrf_token %}

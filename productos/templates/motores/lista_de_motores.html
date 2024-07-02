@@ -24,17 +24,17 @@ Listado de motores
                     <p><img src="{{motor.imagenproducto.url}}" class="" width="100px"></p>
                 {% endif %} 
 
-               <h5 style="color: #AA1000;"> {{motor.titulo}} </h5> <a class="navbar-brand"  style="color: #FF1000;" href="{% url 'detail' motor.id %}"><i class="bi bi-eye" style="color: #FF1000;"></i>Ver</a>
+               <h5 style="color: #AA1000;"> {{motor.titulo}} </h5> 
+               <a class="btn btn-outline-secondary"  style="color: #FF1000;" href="{% url 'detailmo' motor.id %}">Ver</a>
                
                 
                 {% if user.id == motor.usuario.id %}
-                <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'edit' motor.id %}"><i class="bi bi-pencil-fill"></i>Editar</a>
-                <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'eliminar' motor.id %}"><i class="bi bi-trash text-danger"></i>Eliminar</a> 
-                
-                {% else %}
-                {% if request.user.is_authenticated  %}
-                <a class="navbar-brand" style="color: #FF1000;"  href="{% url 'enviar'  %}"><i class="bi bi-trash text-danger"></i>contacto</a> 
-                {% endif %}
+                <a class="btn btn-outline-secondary" style="color: #FF1000;"  href="{% url 'editmo' motor.id %}">Editar</a>
+                <a class="btn btn-outline-secondary" style="color: #FF1000;"  href="{% url 'eliminarmo' motor.id %}">Eliminar</a> 
+                <br>
+                <br>
+               
+              
                 {% endif %}
                 <br>
                 <br>

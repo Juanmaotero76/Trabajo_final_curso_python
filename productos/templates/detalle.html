@@ -19,16 +19,19 @@ Detalle
 {% endif %}
 {% if radios.imagenproducto %}
     <p><img src="{{radios.imagenproducto.url}}" class="" width="300px"></p>
-   {% endif %}
-<p>Marca: {{motores.marca}}{{aviones.marca}} {{radios.marca}}{{otros.marca}}</p>
-<p>Modelo: {{motores.modelo}}{{aviones.modelo}}{{radios.modelo}}{{otros.modelo}}</p>
-<p>Descripción: {{motores.descripcion}}{{aviones.descripcion}}{{radios.descripcion}}{{otros.descripcion}}</p>
-<p>Año: {{motores.year}}{{aviones.year}}{{radios.year}}{{otros.year}}</p>
-<p>Precio(US$): {{motores.precio}}{{aviones.precio}}{{radios.precio}}{{otro.precio}}</p>
+{% endif %}
+{% if otro.imagenproducto %}
+    <p><img src="{{otro.imagenproducto.url}}" class="" width="300px"></p>
+{% endif %}
+<p>Marca: {{motores.marca}}{{aviones.marca}} {{radios.marca}}{{otro.marca}}</p>
+<p>Modelo: {{motores.modelo}}{{aviones.modelo}}{{radios.modelo}}{{otro.modelo}}</p>
+<p>Descripción: {{motores.descripcion}}{{aviones.descripcion}}{{radios.descripcion}}{{otro.descripcion}}</p>
+<p>Año: {{motores.year}}{{aviones.year}}{{radios.year}}{{otro.year}}</p>
+<p>Precio(USD): {{motores.precio}}{{aviones.precio}}{{radios.precio}}{{otro.precio}}</p>
 {% if request.user.is_authenticated %}
-<p>Teléfono de Contacto: {{motores.telefonoContacto}}{{aviones.telefonoContacto}}{{radios.telefonoContacto}}{{otros.telefonoContacto}}</p>
-<p>Email de Contacto: {{motores.emailContacto}}{{aviones.emailContacto}}{{radios.emailContacto}}{{otros.emailContacto}}</p>
-<p>Usuario de la publicacion: {{motores.usuario}}{{aviones.usuario}}{{radios.usuario}}{{otros.usuario}}</p>
+<p>Teléfono de Contacto: {{motores.telefonoContacto}}{{aviones.telefonoContacto}}{{radios.telefonoContacto}}{{otro.telefonoContacto}}</p>
+<p>Email de Contacto: {{motores.emailContacto}}{{aviones.emailContacto}}{{radios.emailContacto}}{{otro.emailContacto}}</p>
+<p>Usuario de la publicacion: {{motores.usuario}}{{aviones.usuario}}{{radios.usuario}}{{otro.usuario}}</p>
 
 
 {% else %}
@@ -43,8 +46,8 @@ Detalle
 {% block botones %}
 <a class="navbar-brand" href={% url 'motores' %}>Motores</a>
 <a class="navbar-brand" href={% url 'aviones' %}>Aviones</a>
-<a class="navbar-brand" href={% url 'productos' %}>Radios</a>
-<a class="navbar-brand" href={% url 'productos' %}>Otros</a>
+<a class="navbar-brand" href={% url 'radios' %}>Radios</a>
+<a class="navbar-brand" href={% url 'otros' %}>Otros</a>
 <a class="navbar-brand" href={% url 'inicio' %}>Inicio</a>
 
 
@@ -55,27 +58,27 @@ Detalle
 {% block main %}
 
 {% if request.user.is_authenticated %}
-    {% if request.user.id == aviones.usuario.id or request.user.id == motores.usuario.id or request.user.id == radios.usuario.id or request.user.id == otros.usuario.id %}
+    {% if request.user.id == aviones.usuario.id or request.user.id == motores.usuario.id or request.user.id == radios.usuario.id or request.user.id == otro.usuario.id %}
     {% if aviones %}
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'edit' aviones.id %}>Editar</a>
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminar' aviones.id %}>Eliminar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'editav' aviones.id %}>Editar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminarav' aviones.id %}>Eliminar</a>
     {% endif %}
     {% if motores %}
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'edit' aviones.id %}>Editar</a>
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminar' motores.id %}>Eliminar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'editmo' motores.id %}>Editar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminarmo' motores.id %}>Eliminar</a>
     {% endif %}
     {% if radios %}
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'edit' radios.id %}>Editar</a>
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminar' radios.id %}>Eliminar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'editra' radios.id %}>Editar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminarra' radios.id %}>Eliminar</a>
     {% endif %}
-    {% if otros %}
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'edit' otros.id %}>Editar</a>
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminar' otros.id %}>Eliminar</a>
+    {% if otro %}
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'editot' otro.id %}>Editar</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'eliminarot' otro.id %}>Eliminar</a>
     {% endif %}
 
     {% else %}
-
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'enviar' %}>enviar mensaje a {{motores.usuario}}{{aviones.usuario}} {{radios.usuario}}{{otros.usuario}}?</a>
+    
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'enviar' %}>enviar mensaje a {{motores.usuario}}{{aviones.usuario}} {{radios.usuario}}{{otro.usuario}}?</a>
 
     {% endif %}
 {% endif %}

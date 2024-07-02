@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{% load static %}
+{% block titulo %}
+  About me
+{% endblock titulo %}
+{% block h1_header %}
+
+    <h2 class="text-center text-dark">
+        Acerca de Mi
+    </h2>
+    
+    <br>
+    <div class="row">
+        <div class="col-md-6 col-lg-5">
+            
+                <div class="card-body text-center">
+                 
+                <img src={% static 'assets/img/vandemberg.jpg' %}  width="150px">
+                 <h4 class="card-title mb-3">Juan Manuel Otero</h4>
+                 <p class="card-text">Ing Electrónico.</p>
+                 <p class="card-text">Sigueme en:</p> 
+                 <a class="bi bi-linkedin text-white mx-1" href="https://www.linkedin.com/in/juan-manuel-otero-006a8497" >Linkedin</a>
+                </div>
+            
+        </div>
+        <div class="col-md-10 col-lg-7">
+         <div class="">
+              <h6>
+               <div class="text-start">
+                 <p>Hola Soy Juan Manuel, ingeniero Electrónico y amante de la aviación. Aeromodelista desde mis 13 años y acutualmente también soy piloto de planeador. Profesionalmte me desempeñe en el area nuclear y aeroespacial durante 15 años como ingeniero de diseño hasta ingeniero de sistemas de avionica. Actualmente me estoy especializando en python</p>
+               </div>
+            </h6>
+         </div>
+     </div>
+    </div>
+
+
+
+{% endblock h1_header %}  
+{% block botones %}
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href={% url 'inicio' %}>Inicio</a></li>
+
+                    </ul>
+
+
+{% endblock botones %}
+{% block fondo %}
+
+<header class="about">
+
+{% endblock fondo %}
+
+
+
+

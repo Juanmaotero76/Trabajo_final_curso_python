@@ -8,7 +8,7 @@
     <p><b>From:</b> {{ message.sender.username }}</p>
     <p><b>Message:</b> {{ message.content }}</p>
     <p><b>Sent:</b> {{ message.timestamp }}</p>
-    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'enviar' %}>Enviar mensaje</a>
+    <a class="nav-item"><a class="btn btn-primary" aria-current="page" href={% url 'enviar' %}>Responder</a>
 </div>
 {% endfor %}
 {% endblock %}

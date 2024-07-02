@@ -10860,8 +10860,8 @@ header.aviones {
   background-color: #343a40;
   background: url("../assets/img/avion.jpg") no-repeat center center;
   background-size: cover;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 header.radios {
@@ -10869,6 +10869,24 @@ header.radios {
   background-color: #343a40;
   background: url("../assets/img/radio.jpg") no-repeat center center;
   background-size: cover;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+header.about {
+  position: relative;
+  background-color: #343a40;
+  background: url("../assets/img/20240516_181816.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+}
+
+header.otros {
+  position: relative;
+  background-color: #343a40;
+  background: url("../assets/img/otros.jpg") no-repeat center center;
+  background-size: cover;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
 }
