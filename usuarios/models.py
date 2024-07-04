@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 class DatosAdicionales(models.Model):
     user=models.OneToOneField(User, on_delete=models.CASCADE)
     avatar =models.ImageField(upload_to='avatares', blank=True, null=True)
-    ciudad = models.CharField(max_length=40, default='Bariloche')
+    ciudad = models.CharField(max_length=40)
 
 
 class Message(models.Model):

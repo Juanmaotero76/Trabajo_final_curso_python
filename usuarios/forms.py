@@ -18,7 +18,7 @@ class Formularioeditar(UserChangeForm):
     first_name = forms.CharField(label='Nombre')
     last_name = forms.CharField(label='Apellido')
     avatar=forms.ImageField(required=False)
-    ciudad=forms.CharField()
+    ciudad=forms.CharField(label='ciudad')
     
     class Meta:
         model = User
